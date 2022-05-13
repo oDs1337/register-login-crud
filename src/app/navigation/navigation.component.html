@@ -1,1 +1,29 @@
-<p>navigation works!</p>
+<p class="navigation">
+  <mat-toolbar color="primary">
+    <div class="titleLabel">
+      <span>
+        Another crud app
+      </span>
+      <span class="icon">
+        <mat-icon class="icon">
+          cake
+        </mat-icon>
+      </span>
+    </div>
+    <span class="spacer"></span>
+    <div class="buttonsContainer">
+      <button mat-raised-button [routerLink]="['register']" class="marginLeft registerButton">
+        register
+      </button>
+      <button mat-raised-button [routerLink]="['login']" class="marginLeft loginButton">
+        login
+      </button>
+      <button mat-raised-button [routerLink]="['settings']" class="marginLeft settingsButton">
+        settings
+      </button>
+      <button mat-raised-button class="marginLeft logoutButton">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</p>
