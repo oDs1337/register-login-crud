@@ -1,8 +1,35 @@
-<mat-form-field appearance="fill">
-  <mat-label>Input</mat-label>
-  <input matInput>
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Textarea</mat-label>
-  <textarea matInput></textarea>
-</mat-form-field>
+<div class="formContainer">
+  <div class="titleLabel">
+    <span>Register
+    </span>
+  </div>
+  <form #userRegister [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+    <div class="emailContainer">
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+    </div>
+    <div class="nameContainer">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+    <div class="lastNameContainer">
+      <mat-form-field appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+    </div>
+    <div class="passwordContainer">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+    </div>
+    <div class="submitButton">
+      <button mat-raised-button type="submit">Register</button>
+    </div>
+  </form>
+</div>

@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm?: FormGroup;
+  registerForm!: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
@@ -19,8 +19,10 @@ export class RegisterComponent implements OnInit {
       lastName: '',
       password: '',
     });
+  }
 
-    this.registerForm.valueChanges.subscribe(console.log);
+  onSubmit(dupa: any): void{
+    console.log(dupa);
   }
 
 }
