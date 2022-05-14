@@ -41,7 +41,7 @@
       </mat-form-field>
     </div>
     <div class="submitButton">
-      <button mat-raised-button type="submit">Register</button>
+      <button mat-raised-button type="submit" [disabled]="registerForm.invalid">Register</button>
     </div>
   </form>
 </div>
