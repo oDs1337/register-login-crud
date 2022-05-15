@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Account } from '../account';
+import { AccountsService } from '../accounts.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private accountService: AccountsService) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -35,7 +37,7 @@ export class RegisterComponent implements OnInit {
       ]]
     });
 
-    this.registerForm.valueChanges.subscribe(console.log);
+   // this.registerForm.valueChanges.subscribe(console.log);
 
   }
 
@@ -56,8 +58,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  onSubmit(dupa: any): void{
-    console.log(dupa);
+  onSubmit(registerFormDate: Account): void{
+    console.log(registerFormDate);
+    this.accountService.sendAccountToDatabase(registerFormDate);
   }
 
 }

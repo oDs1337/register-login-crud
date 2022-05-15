@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { Account } from './account';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +7,11 @@ import { Injectable } from '@angular/core';
 })
 export class AccountsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+
+  sendAccountToDatabase(accountToRegister: Account){
+    this.http
+    .post('https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json', [accountToRegister]);
+  }
 }
