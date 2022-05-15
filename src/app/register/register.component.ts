@@ -35,6 +35,8 @@ export class RegisterComponent implements OnInit {
       ]]
     });
 
+    this.registerForm.valueChanges.subscribe(console.log);
+
   }
 
   get email(){
