@@ -1,6 +1,6 @@
 import { Subject, take, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Account } from './account';
+import { Account, AccountDTO } from './account';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,7 +8,9 @@ import { Injectable } from '@angular/core';
 })
 export class AccountsService {
 
-  users?: any;
+  //musisz mi pomoc z tymi interface'ami bo nie wiedzialem jak to napisac
+  #users: any;
+  #arrayOfUsers?: any[];
   #databaseUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json";
 
   constructor(private http: HttpClient) { }
@@ -25,14 +27,15 @@ export class AccountsService {
   fetchData(){
     this.http.get(this.#databaseUrl)
         .subscribe((res => {
-          this.users = res;
-          console.log(this.users);
-          let dupa: any[];
-          dupa = Object.keys(this.users).map(index => {
-            let user = this.users[index];
+          this.#users = res;
+          this.#arrayOfUsers = Object.keys(this.#users).map(index => {
+            let user = this.#users[index][0];
             return user;
-          })
-          console.log(dupa[0][0].name);
+          });
     }))
+  }
+
+  getUsers(){
+    return this.#arrayOfUsers;
   }
 }

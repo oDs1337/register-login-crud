@@ -39,6 +39,8 @@ export class RegisterComponent implements OnInit {
       ]]
     });
 
+    this.accountService.fetchData();
+    this.fetchData();
    // this.registerForm.valueChanges.subscribe(console.log);
 
   }
@@ -66,7 +68,8 @@ export class RegisterComponent implements OnInit {
   }
 
   fetchData(): void{
-    this.accountService.fetchData();
+    this.users = this.accountService.getUsers();
+    console.log(this.users);
   }
 
 }

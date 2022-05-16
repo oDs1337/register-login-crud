@@ -1,3 +1,7 @@
+export interface AccountDTO{
+  r: Account[];
+}
+
 export interface Account{
   email: string,
   name: string,
