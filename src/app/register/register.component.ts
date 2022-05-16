@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
 
-  users?: any;
+  users?: Account[];
 
   constructor(private fb: FormBuilder, private accountService: AccountsService) { }
 
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
 
     this.accountService.fetchData();
     this.fetchData();
-   this.registerForm.valueChanges.subscribe(console.log);
+   //this.registerForm.valueChanges.subscribe(console.log);
 
   }
 
@@ -50,15 +50,15 @@ export class RegisterComponent implements OnInit {
   }
 
   get name(){
-    return this.registerForm.get('name');
+    return this.registerForm.get('name') as FormControl;
   }
 
   get lastName(){
-    return this.registerForm.get('lastName');
+    return this.registerForm.get('lastName') as FormControl;
   }
 
   get password(){
-    return this.registerForm.get('password');
+    return this.registerForm.get('password') as FormControl;
   }
 
 
@@ -69,7 +69,6 @@ export class RegisterComponent implements OnInit {
 
   fetchData(): void{
     this.users = this.accountService.getUsers();
-    console.log(this.users);
   }
 
 }

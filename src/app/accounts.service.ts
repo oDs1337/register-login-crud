@@ -9,8 +9,7 @@ import { Injectable } from '@angular/core';
 export class AccountsService {
 
   //musisz mi pomoc z tymi interface'ami bo nie wiedzialem jak to napisac
-  #users: any;
-  #arrayOfUsers?: any[];
+  #users?: Account[];
   #databaseUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json";
 
   constructor(private http: HttpClient) { }
@@ -25,17 +24,13 @@ export class AccountsService {
   }
 
   fetchData(){
-    this.http.get(this.#databaseUrl)
-        .subscribe((res => {
-          console.log(res);
-          this.#users = Object.keys(res).map(element => {
-            let user = this.#users[element];
-            return user;
-          });
+    this.http.get<Account[]>(this.#databaseUrl)
+    .subscribe((res => {
+        this.#users = res;
     }))
   }
 
   getUsers(){
-    return this.#arrayOfUsers;
+    return this.#users;
   }
 }
