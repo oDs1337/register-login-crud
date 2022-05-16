@@ -1,6 +1,6 @@
 import { Subject, take, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Account, AccountDTO } from './account';
+import { Account } from './account';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -16,9 +16,9 @@ export class AccountsService {
   constructor(private http: HttpClient) { }
 
 
-  sendAccountToDatabase(accountToRegister: Account){
+  registerUser(accountData: Account){
     this.http
-        .post(this.#databaseUrl, [accountToRegister])
+        .post(this.#databaseUrl, accountData)
         .subscribe(res => {
           console.log(res);
         });
@@ -27,9 +27,9 @@ export class AccountsService {
   fetchData(){
     this.http.get(this.#databaseUrl)
         .subscribe((res => {
-          this.#users = res;
-          this.#arrayOfUsers = Object.keys(this.#users).map(index => {
-            let user = this.#users[index][0];
+          console.log(res);
+          this.#users = Object.keys(res).map(element => {
+            let user = this.#users[element];
             return user;
           });
     }))

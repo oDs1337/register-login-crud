@@ -1,13 +1,12 @@
 <div class="formContainer">
   <div class="titleLabel">
-    <span>Register
-    </span>
+    <span>Register</span>
   </div>
-  <form #userRegister [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
     <div class="emailContainer">
       <mat-form-field appearance="outline">
         <mat-label>E-mail</mat-label>
-        <input matInput formControlName="email">
+        <input matInput [formControl]="email">
         <mat-error *ngIf="email?.invalid">
           <span>Your e-mail is incorrect</span>
         </mat-error>

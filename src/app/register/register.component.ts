@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Account } from '../account';
 import { AccountsService } from '../accounts.service';
 
@@ -41,12 +41,12 @@ export class RegisterComponent implements OnInit {
 
     this.accountService.fetchData();
     this.fetchData();
-   // this.registerForm.valueChanges.subscribe(console.log);
+   this.registerForm.valueChanges.subscribe(console.log);
 
   }
 
   get email(){
-    return this.registerForm.get('email');
+    return this.registerForm.get('email') as FormControl;
   }
 
   get name(){
@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(registerFormDate: Account): void{
     console.log(registerFormDate);
-    this.accountService.sendAccountToDatabase(registerFormDate);
+    this.accountService.registerUser(registerFormDate);
   }
 
   fetchData(): void{
