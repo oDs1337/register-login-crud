@@ -1,3 +1,4 @@
+import { Subject, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Account } from './account';
 import { Injectable } from '@angular/core';
@@ -6,6 +7,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AccountsService {
+
+  #currentUser: Subject<Account> = new Subject();
 
   constructor(private http: HttpClient) { }
 

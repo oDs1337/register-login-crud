@@ -63,4 +63,8 @@ export class RegisterComponent implements OnInit {
     this.accountService.sendAccountToDatabase(registerFormDate);
   }
 
+  fetchData(): void{
+
+  }
+
 }
