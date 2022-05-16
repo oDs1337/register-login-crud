@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
 
+  users?: any;
+
   constructor(private fb: FormBuilder, private accountService: AccountsService) { }
 
   ngOnInit(): void {
@@ -64,7 +66,7 @@ export class RegisterComponent implements OnInit {
   }
 
   fetchData(): void{
-
+    this.accountService.fetchData();
   }
 
 }
