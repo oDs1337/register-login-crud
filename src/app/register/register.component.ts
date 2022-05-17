@@ -69,6 +69,7 @@ export class RegisterComponent implements OnInit {
 
   fetchData(): void{
     this.users = this.accountService.getUsers();
+    console.log(this.users);
   }
 
 }
