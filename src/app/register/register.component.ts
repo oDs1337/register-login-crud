@@ -12,8 +12,6 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
 
-  users?: Account[];
-
   constructor(private fb: FormBuilder, private accountService: AccountsService) { }
 
   ngOnInit(): void {
@@ -38,9 +36,6 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(9),
       ]]
     });
-
-    this.accountService.fetchData();
-    this.fetchData();
    //this.registerForm.valueChanges.subscribe(console.log);
 
   }
@@ -66,10 +61,4 @@ export class RegisterComponent implements OnInit {
     console.log(registerFormDate);
     this.accountService.registerUser(registerFormDate);
   }
-
-  fetchData(): void{
-    this.users = this.accountService.getUsers();
-    console.log(this.users);
-  }
-
 }
