@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Account } from '../account';
 import { AccountsService } from '../accounts.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +12,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-  users?: Account[];
 
   constructor(private fb: FormBuilder, private accountService: AccountsService) { }
 
@@ -44,14 +42,8 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password') as FormControl;
   }
 
-  onSubmit(data: any){
-    this.users = this.accountService.getUsers()!;
-
-    this.users.forEach(user => {
-      console.log(user);
-    })
-
-
+  onSubmit(loginData: { email: string, password: string}){
+    this.accountService.loginUser(loginData.email, loginData.password);
   }
 
 }

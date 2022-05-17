@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class AccountsService {
 
   //musisz mi pomoc z tymi interface'ami bo nie wiedzialem jak to napisac
-  #users?: Account[];
+  #users: Account[] = [];
   #databaseUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json";
 
   constructor(private http: HttpClient) { }
@@ -21,6 +21,14 @@ export class AccountsService {
         .subscribe(res => {
           console.log(res);
         });
+  }
+
+  loginUser(email: string, password: string){
+    this.#users.forEach(user => {
+      if(email === user.email && password === user.password){
+        console.log("logged in");
+      }
+    })
   }
 
   fetchData(){
