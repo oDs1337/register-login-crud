@@ -24,9 +24,12 @@ export class AccountsService {
   }
 
   fetchData(){
-    this.http.get<Account[]>(this.#databaseUrl)
+    this.http.get<any>(this.#databaseUrl)
     .subscribe((res => {
-        this.#users = res;
+        this.#users = Object.keys(res).map(element => {
+          let user = res[element];
+          return user;
+        })
     }))
   }
 

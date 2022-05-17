@@ -3,4 +3,4 @@ export interface Account{
   name: string,
   lastName: string,
   password: string,
-}
+};
