@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { AccountsService } from '../accounts.service';
+import { AccountsService } from '../services/accounts.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 

@@ -1,6 +1,6 @@
 import { Subject, take, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Account } from './account';
+import { Account } from './../account';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class AccountsService {
 
-  //musisz mi pomoc z tymi interface'ami bo nie wiedzialem jak to napisac
   #users: Account[] = [];
+  #currentUserInfo: Observable<Account> = new Observable();
   #databaseUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json";
 
   constructor(private http: HttpClient) { }
@@ -43,5 +43,9 @@ export class AccountsService {
 
   getUsers(){
     return this.#users;
+  }
+
+  getCurrentUserInfo(){
+    return this.#currentUserInfo;
   }
 }
