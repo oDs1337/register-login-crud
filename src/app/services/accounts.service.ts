@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class AccountsService {
 
   #users: Account[] = [];
-  #currentUserInfo: Observable<Account> = new Observable();
+  #currentUserInfo!: Account;
   #databaseUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json";
 
   constructor(private http: HttpClient) { }
@@ -23,10 +23,15 @@ export class AccountsService {
         });
   }
 
+  updateUser(updateData: Account){
+    console.log(this.#currentUserInfo);
+  }
+
   loginUser(email: string, password: string){
     this.#users.forEach(user => {
       if(email === user.email && password === user.password){
         console.log("logged in");
+        this.#currentUserInfo = user;
       }
     })
   }
@@ -48,4 +53,5 @@ export class AccountsService {
   getCurrentUserInfo(){
     return this.#currentUserInfo;
   }
+
 }

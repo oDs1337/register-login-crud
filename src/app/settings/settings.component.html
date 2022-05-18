@@ -1,20 +1,53 @@
-<div class="info">
-  <div class="info_title">
-    <span>User info</span>
+<div class="form">
+  <div class="form_title">
+    <span>Update your informations</span>
   </div>
+  <form [formGroup]="manageForm" (ngSubmit)="onSubmit(manageForm.value)">
+    <div class="form_email">
+      <mat-form-field appearance="outline">
+        <mat-label>Change e-mail</mat-label>
+        <input matInput [formControl]="email">
+        <mat-error *ngIf="email?.invalid">
+          <mat-hint>
+            <span>Your e-mail is incorrect</span>
+          </mat-hint>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form_name">
+      <mat-form-field appearance="outline">
+        <mat-label>Change name</mat-label>
+        <input matInput [formControl]="name">
+        <mat-error *ngIf="name?.invalid">
+          <mat-hint>
+            <span>Your name is incorrect</span>
+          </mat-hint>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form_lastName">
+      <mat-form-field appearance="outline">
+        <mat-label>Change last name</mat-label>
+        <input matInput [formControl]="lastName">
+        <mat-error *ngIf="lastName?.invalid">
+          <mat-hint>
+            <span>Your last name is incorrect</span>
+          </mat-hint>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form_password">
+      <mat-form-field appearance="outline">
+        <mat-label>Change password</mat-label>
+        <input matInput type="password" [formControl]="password">
+        <mat-error *ngIf="password?.invalid">
+          <mat-hint>Your password is incorrect</mat-hint>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="submit">
+      <button mat-raised-button type="submit" [disabled]="manageForm.invalid">Update</button>
+    </div>
 
-  <div class="info_container info-email">
-    <span>email</span>
-  </div>
-  <div class="info_container info-name">
-    <span>name</span>
-  </div>
-  <div class="info_container info-lastName">
-    <span>last name</span>
-  </div>
-  <div class="info_container info-password">
-    <span>password</span>
-  </div>
-
+  </form>
 </div>
-<!-- trzeba zrobic formularz -->
