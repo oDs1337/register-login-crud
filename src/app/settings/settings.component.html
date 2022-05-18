@@ -1,6 +1,6 @@
 <div class="form">
   <div class="form_title">
-    <span>Update your informations</span>
+    <span>Update your informations, {{currentUser?.name}}</span>
   </div>
   <form [formGroup]="manageForm" (ngSubmit)="onSubmit(manageForm.value)">
     <div class="form_email">

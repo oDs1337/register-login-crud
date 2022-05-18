@@ -12,10 +12,11 @@ export class SettingsComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private accountService: AccountsService) { }
 
-  isEmailDisabled = false;
+  currentUser?: Account;
   manageForm!: FormGroup;
 
   ngOnInit(): void {
+    this.currentUser = this.accountService.getCurrentUserInfo();
     this.manageForm = this.fb.group({
       email: ['',[
         Validators.email

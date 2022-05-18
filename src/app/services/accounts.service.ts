@@ -9,8 +9,8 @@ import { Injectable } from '@angular/core';
 export class AccountsService {
 
   #users: Account[] = [];
-  #currentUserInfo!: Account;
-  #databaseUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json";
+  #currentUserInfo?: Account;
+  #databaseUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers.json/";
 
   constructor(private http: HttpClient) { }
 
@@ -41,6 +41,7 @@ export class AccountsService {
     .subscribe((res => {
         this.#users = Object.keys(res).map(element => {
           let user = res[element];
+          console.log();
           return user;
         })
     }))
