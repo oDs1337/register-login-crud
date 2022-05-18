@@ -40,10 +40,10 @@ export class AccountsService {
     this.http.get<any>(this.#databaseUrl)
     .subscribe((res => {
         this.#users = Object.keys(res).map(element => {
-          let user = res[element];
-          console.log();
-          return user;
-        })
+        let user = res[element];
+        user.id = element;
+        return user;
+      })
     }))
   }
 
