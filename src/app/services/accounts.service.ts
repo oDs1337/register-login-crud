@@ -24,7 +24,8 @@ export class AccountsService {
   }
 
   updateUser(updateData: Account){
-    console.log(this.#currentUserInfo);
+    const updateUrl = "https://register-login-crud-default-rtdb.europe-west1.firebasedatabase.app/registeredUsers/" + this.#currentUserInfo?.id;
+    console.log(updateUrl);
   }
 
   loginUser(email: string, password: string){
